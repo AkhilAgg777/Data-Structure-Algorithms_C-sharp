@@ -1,0 +1,45 @@
+using System;
+
+public class Test
+{
+
+public static void calculateSum(string str1,string str2){
+if(str1.Length<str2.Length){
+string t=str1;
+str1=str2;
+str2=t;
+}
+
+int i=str1.Length-1,j=str2.Length-1;
+int carry=0;
+string res="";
+while(i>=0 && j>=0){
+int sum=((int)(str1[i]-'0')+(int)(str2[j]-'0')+carry);
+res=(char)(sum%10+'0')+res;
+carry=sum/10;
+i--;
+j--;
+}
+
+while(i>=0){
+int sum=((int)(str1[i]-'0')+carry);
+res=(char)(sum%10+'0')+res;
+carry=sum/10;
+i--;
+}
+
+if(carry>0){
+res=(char)(carry+'0')+res;
+}
+
+Console.WriteLine($"Result is {res}");
+
+}
+	public static void Main()
+	{
+		// your code goes here
+		
+		
+		calculateSum("12","198111");
+	}
+}
